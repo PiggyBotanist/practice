@@ -1,5 +1,6 @@
 """
-Completion Date: June 12, 2023
+Written by: PiggyBotanist
+Date: June 12, 2023
 
 Description: 
 - Given a sentence or a paragraph, this program will encrypt it and then decrypt it using a key.
