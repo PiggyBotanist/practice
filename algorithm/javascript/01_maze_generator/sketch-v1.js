@@ -1,5 +1,5 @@
 // Title: Maze Generator Using Back-track Recursion
-// Written by: Jeremy Chang
+// Written by: PiggyBotanist
 // Date: July 10, 2023
 
 // Note: This javascript also uses p5.js functions.
