@@ -5,7 +5,7 @@
 // Visited (boolean): For maze generation (shows whether the cell has been generated or not).
 // Explored (boolean): For path finding algorithm (shows whether the cell has been explored or not).
 
-// Written by: Jeremy Chang
+// Written by: PiggyBotanist
 // Date: July 11, 2023
 
 function Cell(i, j){
