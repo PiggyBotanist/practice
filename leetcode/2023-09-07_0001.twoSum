@@ -1,11 +1,8 @@
-/*
-Date: 2023-09-07
-By: Piggy Botanist
-
 Question: 
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 You can return the answer in any order.
+
 Example 1:
 Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
@@ -23,31 +20,40 @@ Constraints:
 2 <= nums.length <= 104
 -109 <= nums[i] <= 109
 -109 <= target <= 109
-*/
 
-/* Javascript Submission (Brute Force) */
-/* Runtime: 86ms, beats 42.88% users. Memory: 41.95Mb, beats 87.18% users*/
+*************************************************************************************************************************
+Attempt #1 (2023-09-07)- Javascript
+(Runtime: 86ms, beats 42.88% users. Memory: 41.95Mb, beats 87.18% users)
 
 var twoSum = function(nums, target) {
+    // Loop through each number
     for(let i = 0; i < nums.length - 1; i++){
+        // Loop through all numbers to the right
         for(let j = i + 1; j < nums.length; j++){
+            // If the both numbers added together is equal to target, then return their position
             if(nums[i] + nums[j] == target){
                 return [i, j];
             }
         }
     }
 };
+*************************************************************************************************************************
+Attempt #2 (2023-09-07) - Javascript (Optimized)
+(Runtime: 54ms, beats 87.69% users. Memory: 42.89Mb, beats 36.63% users)
 
-/* Javascript Submission (Hash Map) */
-/* Runtime: 54ms, beats 87.69% users. Memory: 42.89Mb, beats 36.63% users*/
 var twoSum = function(nums, target) {
+    // Create an empty dictionary
     let numMap = {};
 
+    // Loop through all the numbers once
     for(let i = 0; i < nums.length; i++){
+        // Find the remainer
         complement = target - nums[i];
+        // If remainer exist in the previous numbers we have loop through, return the position
         if(complement in numMap){
             return [numMap[complement], i];
         }
+        // add this number and its position to the dictionary
         numMap[nums[i]] = i;
     }
 };
