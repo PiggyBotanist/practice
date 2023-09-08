@@ -1,4 +1,6 @@
-You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+Question:
+You are given two non-empty linked lists representing two non-negative integers. 
+The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
 Example 1:
@@ -19,7 +21,9 @@ Constraints:
 - 0 <= Node.val <= 9
 - It is guaranteed that the list represents a number that does not have leading zeros.
 
-Attempt #1 - Python:
+*************************************************************************************************************************
+Attempt #1 (2023-09-08)- Python
+(Runtime: 87ms, beats 8.00% users. Memory: 16.38Mb, beats 62.85% users)
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
@@ -54,4 +58,8 @@ class Solution:
             else:
                 current = ListNode(sumOfNumbers[i], current)                
         return current
+
+
+
+
 
