@@ -1,0 +1,61 @@
+Question:
+Given a string s, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+Example 2:
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
+Example 3:
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+ 
+Constraints:
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+*************************************************************************************************************************
+Attempt #1 (2023-09-11)- Python3
+(Runtime: 53ms, beats 90.27% users. Memory: 16.43Mb, beats 43.90% users)
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # Variable for storing the longest string found so far
+        longestString = ""
+        # Dummy variable that keeps track of where we are in the loop
+        currentString = ""
+        
+        #print(s)
+
+        # Loop through each character in the string
+        for i in range(len(s)):
+        
+            #print("s[i]:", i, s[i])
+
+            # If the new character is found in our substring
+            if s[i] in currentString:
+                # Find the position of the character in the substring 
+                position = currentString.find(s[i])
+                # Remove everything before the repeated character from substring then and the new character
+                currentString = currentString[position+1: len(currentString)] + s[i]
+
+                #print("position: ", position)
+            # Else just add the character into our substring
+            else:
+                currentString += s[i]
+            # If at any point our substring is greater than the longest string, we will replace the longest string with our new substring
+            if len(currentString) > len(longestString):
+                longestString = currentString
+                
+            #print("currentString: ", currentString)
+        #print(longestString)
+        
+        return len(longestString)
