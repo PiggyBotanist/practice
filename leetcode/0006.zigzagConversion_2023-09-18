@@ -1,0 +1,78 @@
+Question: 
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this:
+(you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+Write the code that will take a string and make this conversion given a number of rows:
+string convert(string s, int numRows);
+
+Example 1:
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+
+Example 2:
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+Explanation:
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+
+Example 3:
+Input: s = "A", numRows = 1
+Output: "A"
+
+Constraints:
+
+    1 <= s.length <= 1000
+    s consists of English letters (lower-case and upper-case), ',' and '.'.
+    1 <= numRows <= 1000
+
+*************************************************************************************************************************
+Attempt #1 (2023-09-18)- Javascript
+(Runtime: 124ms, beats 15.68% users. Memory: 51.66Mb, beats 17.69% users)
+
+var convert = function(s, numRows) {
+    // If there's only one row, the string remains unchanged.
+    if (numRows == 1) {
+        return s;
+    }
+
+    // Initialize an array 'output' to store characters in zigzag pattern.
+    let output = [];
+    for (let i = 0; i < numRows; i++) {
+        output.push("");
+    }
+
+    // Initialize 'count' to keep track of how many characters are added to a row,
+    // 'direction' to control whether we're moving up or down the zigzag,
+    // and 'line' to keep track of the current row.
+    let count = 1;
+    let direction = 1;
+    let line = 0;
+
+    // Iterate through the characters in the input string.
+    for (let i = 0; i < s.length; i++) {
+        // Add the current character to the appropriate row in 'output'.
+        output[line] += s[i];
+
+        // If 'count' reaches 'numRows', change the direction to reverse.
+        if (count == numRows) {
+            direction = -1 * direction;
+            count = 1;
+        }
+        count += 1;
+        line += direction;
+    }
+
+    // Concatenate the rows in 'output' to get the final zigzag pattern.
+    let result = "";
+    for (let i = 0; i < numRows; i++) {
+        result = result + output[i];
+    }
+
+    return result; // Return the resulting zigzag pattern.
+};
